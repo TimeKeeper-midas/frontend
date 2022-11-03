@@ -3,7 +3,7 @@
         <NowStatus v-bind:status="status"></NowStatus>
     </div>
 </template>
-<script>
+<script lang="ts">
 import NowStatus from '../components/Stats/NowStatus.vue';
 export default {
     name:"Status",
@@ -15,6 +15,7 @@ export default {
     },
 }
 </script>
-<style lang="">
+
+<style>
     
 </style>
