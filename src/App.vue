@@ -80,15 +80,17 @@ export default {
     },
     async login() {
       const attestation = await startAuthentication(
-        JSON.parse(this.authQueryData.startAuthenticationChallenge as any) as any
+        JSON.parse(
+          this.authQueryData.startAuthenticationChallenge as any
+        ) as any
       );
       window.localStorage.setItem(
         "token",
-        await (
+        (
           await this.authMutation.executeMutation({
             attestation: JSON.stringify(attestation),
           })
-        ).data
+        ).data.finishAuthenticationChallenge
       );
     },
   },

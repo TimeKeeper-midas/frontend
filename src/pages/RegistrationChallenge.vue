@@ -20,23 +20,42 @@ export default {
   },
   methods: {
     async register() {
-      await startRegistration(
-        JSON.parse(
-          (
-            await this.registrationMutation.executeMutation({
-              email: this.email,
-            })
-          ).data.startRegistrationChallenge
+      const email = this.email;
+
+      const attestation = JSON.stringify(
+        await startRegistration(
+          JSON.parse(
+            (
+              await this.startRegistrationMutation.executeMutation({
+                email,
+              })
+            ).data.startRegistrationChallenge
+          )
         )
+      );
+
+      window.localStorage.setItem(
+        "token",
+        (
+          await this.finishRegistrationMutation.executeMutation({
+            email,
+            attestation,
+          })
+        ).data.finishRegistrationChallenge
       );
     },
   },
   setup() {
-    const registrationMutation = useMutation(`mutation ($email: String!) {
+    const startRegistrationMutation = useMutation(`mutation ($email: String!) {
   startRegistrationChallenge(email: $email)
 }`);
 
-    return { registrationMutation };
+    const finishRegistrationMutation =
+      useMutation(`mutation FinishRegistrationChallenge($email: String!, $attestation: String!) {
+  finishRegistrationChallenge(email: $email, attestation: $attestation)
+}`);
+
+    return { startRegistrationMutation, finishRegistrationMutation };
   },
 };
 </script>
