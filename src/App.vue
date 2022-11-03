@@ -35,14 +35,13 @@
             >
             <v-card-actions v-if="webauthnAvailable">
               <v-spacer></v-spacer>
-              <v-btn
-                color="disabled"
-                text
-                @click="goToRegister"
-              >
+              <v-btn color="disabled" text @click="goToRegister">
+                회사 가입
+              </v-btn>
+              <v-btn color="disabled" text @click="goToRegister">
                 처음 로그인이에요
               </v-btn>
-              <v-btn color="blue" text @click="login"> 생체 인증 </v-btn>
+              <v-btn color="blue" text @click="login">생체 인증</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -58,6 +57,7 @@ import {
   browserSupportsWebAuthn,
   startAuthentication,
 } from "@simplewebauthn/browser";
+import { useMutation, useQuery } from "@urql/vue";
 
 export default {
   data() {
@@ -78,21 +78,44 @@ export default {
   methods: {
     goToRegister() {
       this.dialog = false;
-      this.$router.push('/register');
+      this.$router.push("/register");
     },
     async login() {
-      await startAuthentication();
+      const attestation = await startAuthentication(
+        JSON.parse((await this.authQuery.executeQuery()).data as any) as any
+      );
+      window.localStorage.setItem(
+        "token",
+        await (
+          await this.authMutation.executeMutation({
+            attestation: JSON.stringify(attestation),
+          })
+        ).data
+      );
     },
   },
+  setup() {
+    const authQuery = useQuery({
+      query: `query {
+  startAuthenticationChallenge
+}`,
+    });
+
+    const authMutation = useMutation(`mutation ($attestation: String!) {
+  finishAuthenticationChallenge(attestation: $attestation)
+}`);
+
+    return { authQuery, authMutation };
+  },
   mounted() {
-    // this.dialog =
-    //   window.localStorage.getItem("token") === null &&
-    //   this.$route.path !== "/register";
+    this.dialog =
+      window.localStorage.getItem("token") === null &&
+      this.$route.path !== "/register";
   },
 };
 </script>
 <style lang="css">
-*{
+* {
   font-family: "Noto sans kr", sans-serif;
 }
 </style>
