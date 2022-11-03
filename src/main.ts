@@ -10,6 +10,7 @@ import Home from './pages/HomePage.vue'
 import ModifyCompany from './pages/ModifyCompany.vue'
 import RegistrationChallenge from './pages/RegistrationChallenge.vue'
 import StatsPage from './pages/StatsPage.vue'
+import UsersViewPage from './pages/UsersViewPage.vue'
 
 // Composables
 import { createApp } from 'vue'
@@ -37,7 +38,7 @@ const routes = [
   {
     path: '/admin/users',
     name: '사원 관리',
-    component: StatsPage
+    component: UsersViewPage
   },
   {
     path: '/admin/information',

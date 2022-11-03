@@ -68,7 +68,8 @@ export default {
       items: window.location.pathname.startsWith("/admin/")
         ? [
             { title: "대시보드", link: "/admin/" },
-            { title: "사원 관리", link: "/admin/users" },
+            { title: "사원 현황", link: "/admin/users" },
+            { title: "사원 통계", link: "/admin/stats" },
             { title: "기업 정보", link: "/admin/information" },
           ]
         : [{ title: "근태관리^^", link: "/" }],
@@ -91,3 +92,8 @@ export default {
   },
 };
 </script>
+<style lang="css">
+*{
+  font-family: "Noto sans kr", sans-serif;
+}
+</style>

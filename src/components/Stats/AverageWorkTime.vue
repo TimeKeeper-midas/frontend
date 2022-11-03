@@ -3,7 +3,7 @@
         <div class="card">
             <div class="content1">
                 <span>{{averageWorkTime.companyName}} 평균 근무시간</span><br/>
-                {{averageWorkTime.average}} 근무해요<br/>
+                {{averageWorkTime.average}} 근무해요.<br/>
                 
             </div>
         </div>

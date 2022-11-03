@@ -1,6 +1,6 @@
 <template>
   <v-form>
-    <h1 class="text-h4 mb-4">기업정보 수정</h1>
+    <h1>기업정보 수정</h1>
 
     <v-text-field
       v-model="message4"

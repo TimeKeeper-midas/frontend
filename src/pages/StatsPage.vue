@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2 style="text-align:center">사원 통계</h2>
         <NowStatus v-bind:status="status"></NowStatus>
         <AverageAttendance v-bind:averageAttend="averageAttend"></AverageAttendance>
         <AverageWorkTime v-bind:averageWorkTime="averageWorkTime"></AverageWorkTime>
@@ -24,5 +25,3 @@ export default {
     },
 }
 </script>
-
-<style></style>
