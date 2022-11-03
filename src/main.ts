@@ -7,6 +7,7 @@
 // Components
 import App from './App.vue'
 import Home from './pages/HomePage.vue'
+import Stats from './pages/Stats.vue'
 
 // Composables
 import { createApp } from 'vue'
@@ -21,6 +22,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/admin/stats',
+    name: 'stats',
+    component: Stats
   },
 ]
 
