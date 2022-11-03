@@ -1,6 +1,6 @@
-<template>
+<template lang="">
     <div>
-        asdf
+        
     </div>
 </template>
 <script>
