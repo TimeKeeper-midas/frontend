@@ -27,12 +27,12 @@
         <v-dialog v-model="dialog" persistent max-width="600px">
           <v-card>
             <v-card-title>
-              <span class="text-h5">로그인하십셔</span>
+              <span class="text-h5">로그인해주세요</span>
             </v-card-title>
             <v-card-text v-if="!webauthnAvailable"
               >저희는 당신이 사용하고 계신 브라우저를 싫어합니다. 최신 버전의
-              브라우저를 사용해주세요.</v-card-text
-            >
+              브라우저를 사용해주세요.
+            </v-card-text>
             <v-card-actions v-if="webauthnAvailable">
               <v-spacer></v-spacer>
               <v-btn color="disabled" text @click="goToRegister">
@@ -69,7 +69,7 @@ export default {
             { title: "사원 관리", link: "/admin/users" },
             { title: "기업 정보", link: "/admin/information" },
           ]
-        : [{ title: "근태관리^^", link: "/" }],
+        : [{ title: "근태관리 ^^", link: "/" }],
       dialog: false,
     };
   },
@@ -114,8 +114,10 @@ export default {
   },
 };
 </script>
+
 <style lang="css">
-* {
-  font-family: "Noto sans kr", sans-serif;
+html,
+body {
+  font-family: "Noto Sans KR", sans-serif;
 }
 </style>
