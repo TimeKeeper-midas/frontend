@@ -1,27 +1,31 @@
 <template>
     <div>
         <!-- 출퇴근 명시 -->
-        <v-btn-toggle
-            v-model="status"
-            borderless
-        >
-            <v-btn value="attend">
-            <span class="sm-and-down">출근</span>
-            </v-btn>
-
-            <v-btn value="leave">
-            <span class="sm-and-down">퇴근</span>
-            </v-btn>
-
-            <v-btn value="move">
-            <span class="sm-and-down">자리이동</span>
-            </v-btn>
-        </v-btn-toggle>
+        <div class="button_area">
+            <v-btn-toggle
+                v-model="status"
+                borderless
+            >
+                <v-btn value="attend">
+                <span class="sm-and-down">출근</span>
+                </v-btn>
+    
+                <v-btn value="leave">
+                <span class="sm-and-down">퇴근</span>
+                </v-btn>
+    
+                <v-btn value="move">
+                <span class="sm-and-down">자리이동</span>
+                </v-btn>
+            </v-btn-toggle>
+        </div>
+        <div v-if="status!=='move'">
             <v-switch
             v-model="switch1"
             inset
             label="출퇴근 등록을 잊으셨나요?"
             color="success"
+            
             ></v-switch>
             <div class="card" v-if="switch1===true">
                 <div class="content1">
@@ -33,40 +37,45 @@
                     step="15"
                     max="240"
                     >
-                    </v-slider>
-                    <span class="important">{{valueToTime(lated_time)}}</span> 전으로 등록하겠습니다.<br>
+                </v-slider>
+                <span class="important">{{valueToTime(lated_time)[0]}}</span> <br>
+								<span >{{valueToTime(lated_time)[1]}}</span> <br>
                     <span class="description">창을 닫으면 현재시간으로 등록해요.</span>
                 </div>
             </div>
+        </div>
+        <div v-if="status!=='leave'">
 
             <v-switch
             v-model="switch2"
             inset
             label="회사가 아닌곳에서 일하시나요?"
             color="success"
+            v-if="status!=='move'"
             ></v-switch>
-            <div class="card" v-if="switch2===true">
+            <div class="card" v-if="switch2===true || status==='move'">
                 <div class="content1">
                     <span>어디서 업무를 보시나요?</span>
                     <v-text-field
-                        v-model="where"
-                        label="장소"
-                        placeholder="example : 집, 도서관, 오피스"
-                        solo
+                    v-model="where"
+                    label="장소"
+                    placeholder="example : 집, 도서관, 오피스"
+                    solo
                     ></v-text-field>
                 </div>
             </div>
-            <div class="button_area">
-
-            </div>
+        </div>
+        <div class="button_area submit">
             <v-btn
               x-large
               color="success"
               dark
-            >
-              SUBMIT
+              >
+              {{status}}!
             </v-btn>
 
+        </div>
+            
     </div>
 </template>
 <script>
@@ -79,13 +88,18 @@
         where: '',
         status: 'attend',
         valueToTime:(lated_time)=>{
+					var today = new Date();
+					today.setMinutes(today.getMinutes() - lated_time);
+					var hours = ('0' + today.getHours()).slice(-2); 
+					var minutes = ('0' + today.getMinutes()).slice(-2);
+					
             if(lated_time<60){
-                return lated_time+"분";
+                return [lated_time+"분 전으로 등록하겠습니다." , "기록시간 :"+hours+":"+minutes];
             }
             else{
                 let hour=Math.floor(lated_time/60);
                 let minute = lated_time%60;
-                return hour+"시간 "+minute+"분";
+                return [hour+"시간 "+minute+"분 전으로 등록하겠습니다.", "기록시간 :"+hours+":"+minutes];
             }
         }
       }
@@ -119,7 +133,11 @@
         color: #888888;
     }
     .button_area{
-        width: 100%;
-
+        width: fit-content;
+        margin: 10px auto 10px auto;
+    }
+    .submit{
+        margin-top: 50px;
+        
     }
 </style>
