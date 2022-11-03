@@ -67,8 +67,8 @@ export default {
       group: null,
       items: window.location.pathname.startsWith("/admin/")
         ? [
-            { title: "사원 현황", link: "/admin" },
-            { title: "사원 통계", link: "/admin/stats" },
+            { title: "사원 통계", link: "/admin" },
+            { title: "사원 관리", link: "/admin/users" },
             { title: "기업 정보", link: "/admin/information" },
           ]
         : [{ title: "근태관리^^", link: "/" }],
@@ -85,9 +85,9 @@ export default {
     },
   },
   mounted() {
-    this.dialog =
-      window.localStorage.getItem("token") === null &&
-      this.$route.path !== "/register";
+    // this.dialog =
+    //   window.localStorage.getItem("token") === null &&
+    //   this.$route.path !== "/register";
   },
 };
 </script>
