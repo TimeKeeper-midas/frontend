@@ -31,7 +31,7 @@ const routes = [
     component: RegistrationChallenge
   },
   {
-    path: '/admin/stats',
+    path: '/admin',
     name: '사원 통계',
     component: StatsPage
   },

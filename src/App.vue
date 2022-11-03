@@ -67,8 +67,7 @@ export default {
       group: null,
       items: window.location.pathname.startsWith("/admin/")
         ? [
-            { title: "대시보드", link: "/admin/" },
-            { title: "사원 현황", link: "/admin/users" },
+            { title: "사원 현황", link: "/admin" },
             { title: "사원 통계", link: "/admin/stats" },
             { title: "기업 정보", link: "/admin/information" },
           ]
