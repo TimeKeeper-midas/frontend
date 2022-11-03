@@ -19,12 +19,7 @@ import vuetify from './plugins/vuetify'
 const routes = [
   {
     path: '/',
-    name: 'base',
-    component: App
-  },
-  {
-    path: '/home',
-    name: 'home',
+    name: 'Home',
     component: Home
   },
 ]
