@@ -11,6 +11,7 @@
 <script lang="ts">
 import { startRegistration } from "@simplewebauthn/browser";
 import { useMutation } from "@urql/vue";
+import swal from "sweetalert";
 
 export default {
   data() {
@@ -43,6 +44,8 @@ export default {
           })
         ).data.finishRegistrationChallenge
       );
+
+      await swal("^^", "생체 정보를 등록하였습니다.");
     },
   },
   setup() {

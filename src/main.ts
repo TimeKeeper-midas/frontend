@@ -6,7 +6,6 @@
 
 // Components
 import App from "./App.vue";
-import Home from "./pages/HomePage.vue";
 import ModifyCompany from "./pages/ModifyCompany.vue";
 import RegistrationChallenge from "./pages/RegistrationChallenge.vue";
 import StatsPage from "./pages/StatsPage.vue";
@@ -20,18 +19,13 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    name: "출/퇴근",
+    component: Attendance,
   },
   {
     path: "/register",
     name: "생체 정보 등록",
     component: RegistrationChallenge,
-  },
-  {
-    path: "/attendance",
-    name: "출/퇴근",
-    component: Attendance,
   },
   {
     path: "/admin",

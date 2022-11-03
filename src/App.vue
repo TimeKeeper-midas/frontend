@@ -36,7 +36,7 @@
             <v-card-actions v-if="webauthnAvailable">
               <v-spacer></v-spacer>
               <v-btn color="disabled" text @click="goToRegister">
-                회사 가입
+                기업 가입
               </v-btn>
               <v-btn color="disabled" text @click="goToRegister">
                 처음 로그인이에요
@@ -84,6 +84,7 @@ export default {
           this.authQueryData.startAuthenticationChallenge as any
         ) as any
       );
+
       window.localStorage.setItem(
         "token",
         (
@@ -92,6 +93,8 @@ export default {
           })
         ).data.finishAuthenticationChallenge
       );
+
+      this.dialog = false;
     },
   },
   setup() {
