@@ -9,6 +9,7 @@ import App from './App.vue'
 import Home from './pages/HomePage.vue'
 import ModifyCompany from './pages/ModifyCompany.vue'
 import RegistrationChallenge from './pages/RegistrationChallenge.vue'
+import Stats from './pages/Stats.vue'
 
 // Composables
 import { createApp } from 'vue'
@@ -32,6 +33,11 @@ const routes = [
     path: '/admin/information',
     name: '기업 정보',
     component: ModifyCompany
+  },
+  {
+    path: '/admin/stats',
+    name: 'stats',
+    component: Stats
   },
 ]
 
