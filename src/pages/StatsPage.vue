@@ -10,7 +10,7 @@ import NowStatus from '../components/Stats/NowStatus.vue';
 import AverageAttendance from '../components/Stats/AverageAttendance.vue';
 import AverageWorkTime from '../components/Stats/AverageWorkTime.vue';
 export default {
-    name:"Status",
+    name:"StatusPage",
     components:{NowStatus,AverageAttendance,AverageWorkTime},
     data() {
         return {
