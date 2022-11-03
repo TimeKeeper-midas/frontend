@@ -4,13 +4,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "xo"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
     "@simplewebauthn/browser": "^6.3.0-alpha.1",
     "roboto-fontface": "*",
     "vue": "^3.2.38",
+    "vue-router": "^4.1.6",
     "vuetify": "^3.0.0",
     "webfontloader": "^1.0.0"
   },
