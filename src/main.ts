@@ -11,6 +11,7 @@ import ModifyCompany from './pages/ModifyCompany.vue'
 import RegistrationChallenge from './pages/RegistrationChallenge.vue'
 import StatsPage from './pages/StatsPage.vue'
 import UsersViewPage from './pages/UsersViewPage.vue'
+import Attendance from './pages/Attendance.vue'
 
 // Composables
 import { createApp } from 'vue'
@@ -29,6 +30,11 @@ const routes = [
     path: '/register',
     name: '생체 정보 등록',
     component: RegistrationChallenge
+  },
+  {
+    path: '/attendance',
+    name: '출/퇴근',
+    component: Attendance
   },
   {
     path: '/admin',
