@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div class="card">
             <div class="content1">
@@ -8,19 +9,21 @@
             </div>
         </div>
     </div>
+
 </template>
 <script>
 export default {
-    props:{
-        status:{
-            companyName:String,
-            allWorker:Number,
-            nowWorker:Number
-        }
-    }
-}
+  props: {
+    status: {
+      companyName: String,
+      allWorker: Number,
+      nowWorker: Number,
+    },
+  },
+};
 </script>
 <style lang="css">
+
     .card{
         width: 300px;
         height: auto;
@@ -41,3 +44,4 @@ export default {
     }
     
 </style>
+

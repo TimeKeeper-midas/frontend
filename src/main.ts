@@ -30,14 +30,19 @@ const routes = [
     component: RegistrationChallenge
   },
   {
+    path: '/admin/',
+    name: 'stats',
+    component: Stats
+  },
+  {
+    path: '/admin/users',
+    name: '사원 관리',
+    component: Stats
+  },
+  {
     path: '/admin/information',
     name: '기업 정보',
     component: ModifyCompany
-  },
-  {
-    path: '/admin/stats',
-    name: 'stats',
-    component: Stats
   },
 ]
 
