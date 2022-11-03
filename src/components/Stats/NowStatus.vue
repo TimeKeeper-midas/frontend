@@ -1,25 +1,12 @@
 <template>
     <div>
-        <v-card
-            color="#8FA3FF"
-            dark
-          > 
-            
-            <v-card-title class="text-h6 dark">
-                {{status.companyName}} 출근 현황
-            </v-card-title>
-          </v-card>
-          <br/>
-          <v-card
-            color="#8FA3FF"
-            dark
-          > 
-            <v-card-title class="text-h6 dark">
-                {{status.allWorker}}명의 사원중
-            </v-card-title>
-
-            <v-card-text class="text-h6 dark">{{status.nowWorker}} 명이 출근했어요.</v-card-text>
-          </v-card>
+        <div class="card">
+            <div class="content1">
+                <span>{{status.companyName}} 출근 현황</span><br/>
+                {{status.allWorker}}명의 사원중<br/>
+                {{status.nowWorker}}명이 출근했어요.
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -34,13 +21,23 @@ export default {
 }
 </script>
 <style lang="css">
-    .dark{
-        color:#fff;
+    .card{
+        width: 300px;
+        height: auto;
+        border-radius: 16px;
+        background: #e0e0e0;
+        box-shadow:  20px 20px 57px #bcbcbc,
+             -20px -20px 57px #ffffff;
+        margin: 30px auto 15px auto;
     }
-    .title{
-        font-size: 14px;
+    .content1{
+        font-family: "Noto sans kr", sans-serif;
+        padding: 24px;
+        font-size: 22px;
+        font-weight:600;
     }
-    .space{
-        margin-top: 15px;
+    .content1 span {
+        font-size: 18px;
     }
+    
 </style>
