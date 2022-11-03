@@ -13,7 +13,7 @@ import StatsPage from "./pages/StatsPage.vue";
 import UsersViewPage from "./pages/UsersViewPage.vue";
 import Attendance from "./pages/Attendance.vue";
 import vuetify from "./plugins/vuetify";
-import urql, {errorExchange} from "@urql/vue";
+import urql, { defaultExchanges, errorExchange } from "@urql/vue";
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -70,10 +70,13 @@ app
         },
       };
     },
-    exchanges: [errorExchange({
-      onError(error) {
+    exchanges: [
+      ...defaultExchanges,
+      errorExchange({
+        onError(error) {
           window.alert(error.message);
-      },
-    })],
+        },
+      }),
+    ],
   })
   .mount("#app");

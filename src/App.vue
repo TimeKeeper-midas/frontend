@@ -50,8 +50,6 @@
   </v-app>
 </template>
 
-<script setup lang="ts"></script>
-
 <script lang="ts">
 import {
   browserSupportsWebAuthn,
@@ -82,7 +80,7 @@ export default {
     },
     async login() {
       const attestation = await startAuthentication(
-        JSON.parse((await this.authQuery.executeQuery()).data as any) as any
+        JSON.parse(this.authQueryData.startAuthenticationChallenge as any) as any
       );
       window.localStorage.setItem(
         "token",
@@ -105,7 +103,7 @@ export default {
   finishAuthenticationChallenge(attestation: $attestation)
 }`);
 
-    return { authQuery, authMutation };
+    return { authQueryData: authQuery.data, authMutation };
   },
   mounted() {
     this.dialog =
